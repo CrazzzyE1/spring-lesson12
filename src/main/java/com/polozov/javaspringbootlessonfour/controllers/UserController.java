@@ -44,6 +44,7 @@ public class UserController {
 	@GetMapping("/new")
 	public String newUser(Model model) {
 		model.addAttribute(new User());
+		model.addAttribute("roles", roleRepository.findAll());
 		return "user_views/user_form";
 	}
 
