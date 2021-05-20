@@ -4,10 +4,13 @@
 <body>
 
 <div class="container">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/product">Eshop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,30 +28,22 @@
             </div>
         </div>
     </nav>
-    <div class="row py-2">
-        <div class="col-12">
-            <a class="btn btn-outline-dark" th:href="@{/user/new}">ADD</a>
-        </div>
 
-
-        <table class="table table-bordered my-2">
+    <div class="col-10 mx-auto mt-3">
+        <table class="table">
             <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Login</th>
-                <th scope="col">Actions</th>
-            </tr>
+            <h1>Basket</h1>
             </thead>
             <tbody>
-            <tr th:each="user : ${users}">
-                <th scope="row" th:text="${user.id}">1</th>
-                <td th:text="${user.login}">User login</td>
-                <td>
-                    <a class="btn btn-success" th:href="@{/user/{id}(id = ${user.id})}"><i
-                            class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger" th:href="@{/user/delete/{id}(id = ${user.id})}">
+            <tr th:each="product : ${basketList}">
+                <th scope="row" th:text="${product.id}">1</th>
+                <th scope="row" th:text="${product.title}">1</th>
+                <th scope="row" th:text="${product.description}">1</th>
+                <th scope="row" th:text="${product.price}">1</th>
+                <th>
+                    <a class="btn btn-danger" th:href="@{/basket/delete/{id}(id = ${product.id})}">
                         <i class="far fa-trash-alt"></i></a>
-                </td>
+                </th>
             </tr>
             </tbody>
         </table>
